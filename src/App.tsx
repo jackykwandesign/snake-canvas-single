@@ -156,7 +156,6 @@ function App() {
       return
     }
     if (newGameState.gameState !== GameState.START) {
-      console.log("gameState", newGameState.gameState)
       return
     }
 
@@ -165,7 +164,6 @@ function App() {
     for (let i = 0; i < newGameState.players!.length; i++) {
       const player = newGameState.players![i];
       let diff = calNextGridDiff(player.speed, player.direction)
-      console.log('diff', diff)
       let newLocation = {
         x: player.location.x + diff.x,
         y: player.location.y + diff.y,
@@ -180,10 +178,10 @@ function App() {
       // check if eat food
       const isEatFood = checkIsCoorsIncludes(newGameState.food!, newLocation)
       if(isEatFood){
+        console.log("Eat 1 food")
         const remainFoods = newGameState.food!.filter(e=>{
          return  (e.x !== newLocation.x || e.y !== newLocation.y)
         })
-        console.log("newFoods", remainFoods)
         const playerCoordinates:Coordinate[] = []
         
         newGameState.players!.forEach(e=> {

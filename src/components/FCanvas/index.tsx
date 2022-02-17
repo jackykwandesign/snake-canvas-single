@@ -9,7 +9,6 @@ export const FCanvas = <T,>(props: FCanvasProps<T>) => {
         if (canvasRef.current && draw) {
             const ctx = canvasRef.current.getContext("2d", option)
             if (ctx !== null) {
-                console.log("render");
                 
                 let frameCount = 0
                 let animationFrameId:number = 0
