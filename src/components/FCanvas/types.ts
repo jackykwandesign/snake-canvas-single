@@ -23,12 +23,13 @@
 
 // export type FCanvasDraw<T> = ((ctx: T, frameCount?: number) => void)
 
-export interface FCanvasProps {
+export interface FCanvasProps<T> {
     // context: CanvaCon
     draw?: FCanvasDraw
     option?: CanvasRenderingContext2DSettings
     width?:number
     height ?: number
+    state ?: T
 }
 
 export type FCanvasDraw = ((ctx: CanvasRenderingContext2D, frameCount?: number) => void)

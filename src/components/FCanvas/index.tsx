@@ -1,14 +1,16 @@
 import { useEffect, useRef } from "react"
 import { FCanvasProps} from "./types"
 
-export const FCanvas = (props: FCanvasProps) => {
+export const FCanvas = <T,>(props: FCanvasProps<T>) => {
     
     const canvasRef = useRef<HTMLCanvasElement>(null)
-    const { draw, option, height, width,  ...restProps} = props
+    const { draw, option, height, width, state,  ...restProps} = props
     useEffect(() => {
         if (canvasRef.current && draw) {
             const ctx = canvasRef.current.getContext("2d", option)
             if (ctx !== null) {
+                console.log("render");
+                
                 let frameCount = 0
                 let animationFrameId:number = 0
                 const render = () => {
@@ -22,7 +24,7 @@ export const FCanvas = (props: FCanvasProps) => {
                 }
             }
         }
-    }, [draw, option])
+    }, [draw, option, state])
 
     useEffect(() =>{
         if(canvasRef.current && height && width){
